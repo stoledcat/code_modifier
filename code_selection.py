@@ -1,6 +1,5 @@
 file = open("input.txt", encoding="utf-8")
 for string in file:
-    length_line = len(string)
     # проверка длины строки указана в 53 символа из 52 потому что
     # в строке присутствует символ переноса \n, который считается за +1
     if len(string) == 53 and string[0:5] == "01046":
