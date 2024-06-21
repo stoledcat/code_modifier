@@ -1,6 +1,4 @@
 file = open("input.txt", encoding="utf-8")
-line = file.readline
-new_list = []
 for string in file:
     length_line = len(string)
     # проверка длины строки указана в 53 символа из 52 потому что
