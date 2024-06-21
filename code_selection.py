@@ -2,7 +2,7 @@ input_file = open("input.txt", encoding="utf-8")
 
 choise = input('Что модифицировать?\n'
                '1 - Коды блоков\n'
-               '2 - коды пачек\n'
+               '2 - Коды пачек\n'
                'Выбор: ')
 
 
