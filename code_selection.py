@@ -14,7 +14,7 @@ def replace_quotes(new_string):
 
 for string in input_file:
     # Проверка на 52 и 53 символа идет потому что иногда при выгрузке кодов
-    # не ставится сивол переноса строки
+    # не ставится символ переноса строки
     if (len(string) >= 52 or len(string) <= 53) and string[0:5] == "01046":
         new_line = string[0:35]
         with open("output.txt", "a+", encoding="utf-8") as result:
