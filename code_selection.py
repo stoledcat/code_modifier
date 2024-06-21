@@ -14,6 +14,7 @@ def run_choise(choise):
         print('Неверный выбор')
 
 
+# Экранирование кавычек в кодах пачек для SQL-запросов
 def replace_quotes_sql(new_string):
     out_string = ""
     for symbol in new_string:
@@ -25,6 +26,7 @@ def replace_quotes_sql(new_string):
     return out_string
 
 
+# Экранирование кавычек в кодах блоков для json-отчетов
 def replace_quotes_json(new_string):
     out_string = ''
     for symbol in new_string:
