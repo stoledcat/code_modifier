@@ -14,11 +14,22 @@ def run_choise(choise):
         print('Неверный выбор')
 
 
-def replace_quotes(new_string):
+def replace_quotes_sql(new_string):
     out_string = ""
     for symbol in new_string:
         if symbol == "'":
             symbol = "''"
+            out_string += symbol
+        else:
+            out_string += symbol
+    return out_string
+
+
+def replace_quotes_json(new_string):
+    out_string = ''
+    for symbol in new_string:
+        if symbol == '"':
+            symbol = '\\"'
             out_string += symbol
         else:
             out_string += symbol
