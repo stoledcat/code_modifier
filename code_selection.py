@@ -1,5 +1,9 @@
 input_file = open("input.txt", encoding="utf-8")
 
+#  Очистка файла для сохранения результатов выборки, либо его создание
+with open("output.txt", "w", encoding="utf-8") as output:
+    output.close()
+
 
 def replace_quotes(new_string):
     out_string = ""
@@ -10,11 +14,6 @@ def replace_quotes(new_string):
         else:
             out_string += symbol
     return out_string
-
-
-#  Очистка файла для сохранения результатов выборки, либо его создание
-with open("output.txt", "w", encoding="utf-8") as output:
-    output.close()
 
 
 for string in input_file:
