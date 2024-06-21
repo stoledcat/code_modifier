@@ -12,6 +12,11 @@ def replace_quotes(new_string):
     return out_string
 
 
+#  Очистка файла для сохранения результатов выборки, либо его создание
+with open("output.txt", "w", encoding="utf-8") as output:
+    output.close()
+
+
 for string in input_file:
     # Проверка на 52 и 53 символа идет потому что иногда при выгрузке кодов
     # не ставится символ переноса строки
