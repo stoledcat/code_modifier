@@ -24,4 +24,4 @@ for string in input_file:
 input_file.close()
 result.close()
 
-# FIXME реализовать удаление запятой в последней строке кода
+# TODO реализовать удаление запятой в последней строке кода
