@@ -44,7 +44,7 @@ def bundle_code_modify(input_file):
         if (len(string) >= 52 or len(string) <= 53) and string[0:5] == "01046":
             new_line = string[0:35]
             with open("output.txt", "a+", encoding="utf-8") as result:
-                print(f"'{replace_quotes(new_line)}',", file=result)
+                print(f"'{replace_quotes_sql(new_line)}',", file=result)
     result.close()
 
 
