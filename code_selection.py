@@ -1,5 +1,10 @@
 input_file = open("input.txt", encoding="utf-8")
 
+#  Очистка файла для сохранения результатов выборки, либо его создание
+with open("output.txt", "w", encoding="utf-8") as output:
+    output.close()
+
+
 choise = input('Что модифицировать?\n'
                '1 - Коды блоков\n'
                '2 - Коды пачек\n'
