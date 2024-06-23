@@ -34,6 +34,7 @@ def replace_quotes_json(new_line):
 
 # Модифицирование кодов пачек
 def pack_code_modify(input_file):
+    count = 0
     for string in input_file:
         # Проверка на 29 и 30 символа идет потому что иногда при выгрузке кодов
         # не ставится символ переноса строки
@@ -41,12 +42,14 @@ def pack_code_modify(input_file):
             new_line = string[0:25]
             with open("output.txt", "a+", encoding="utf-8") as result:
                 print(f"'{replace_quotes_sql(new_line)}',", file=result)
-    print('Операция модифицирования кодов пачек выполнена')
+            count += 1
+    print(f'Операция модифицирования кодов пачек выполнена. Изменено кодов: {count}.')
     result.close()
 
 
 # Модифицирование кодов блоков
 def bundle_code_modify(input_file):
+    count = 0
     for string in input_file:
         # Проверка на 52 и 53 символа идет потому что иногда при выгрузке кодов
         # не ставится символ переноса строки
@@ -54,7 +57,8 @@ def bundle_code_modify(input_file):
             new_line = string[0:35]
             with open("output.txt", "a+", encoding="utf-8") as result:
                 print(f"'{replace_quotes_json(new_line)}',", file=result)
-    print('Операция модифицирования кодов блоков выполнена')
+            count += 1
+    print(f'Операция модифицирования кодов пачек выполнена. Изменено кодов: {count}.')
     result.close()
 
 
