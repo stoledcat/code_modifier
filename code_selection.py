@@ -43,7 +43,7 @@ def pack_code_modify(input_file):
             with open("output.txt", "a+", encoding="utf-8") as result:
                 print(f"'{replace_quotes_sql(new_line)}',", file=result)
             count += 1
-    print(f'Операция модифицирования кодов пачек выполнена. Изменено кодов: {count}.')
+    print(f'Операция выполнена. Изменено кодов пачек: {count}.')
     result.close()
 
 
@@ -58,7 +58,7 @@ def bundle_code_modify(input_file):
             with open("output.txt", "a+", encoding="utf-8") as result:
                 print(f"'{replace_quotes_json(new_line)}',", file=result)
             count += 1
-    print(f'Операция модифицирования кодов пачек выполнена. Изменено кодов: {count}.')
+    print(f'Операция выполнена. Изменено кодов блоков: {count}.')
     result.close()
 
 
@@ -75,7 +75,7 @@ def main():
     elif choise == "2":
         bundle_code_modify(input_file)
     else:
-        print("Введено неверное значение. Повторите ввод.")
+        print("Введено неверное значение, повторите ввод.")
 
 
 if __name__ == "__main__":
