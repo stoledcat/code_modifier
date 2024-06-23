@@ -1,3 +1,6 @@
+# FIXME реализовать удаление запятой в последней строке кода
+
+
 input_file = open("input.txt", encoding="utf-8")
 
 #  Очистка либо создание файла для сохранения результатов выборки
@@ -29,38 +32,49 @@ def replace_quotes_json(new_line):
     return out_line
 
 
-def bundle_code_modify(input_file, choise):
+# Модифицирование кодов пачек
+def pack_code_modify(input_file):
     for string in input_file:
-        # Проверка на 52 и 53 символа идет потому что иногда при выгрузке кодов
-        # не ставится сивол переноса строки
-        if (len(string) >= 52 or len(string) <= 53) and string[0:5] == "01046":
-            new_line = string[0:35]
+        # Проверка на 29 и 30 символа идет потому что иногда при выгрузке кодов
+        # не ставится символ переноса строки
+        if (len(string) == 29 or len(string) == 30) and string[0:6] == "000000":
+            new_line = string[0:25]
             with open("output.txt", "a+", encoding="utf-8") as result:
-                if choise == "1":
-                    print(f"'{replace_quotes_sql(new_line)}',", file=result)
-                elif choise == "2":
-                    print(f"'{replace_quotes_json(new_line)}',", file=result)
-    print('Операция модифицирования выполнена')
+                print(f"'{replace_quotes_sql(new_line)}',", file=result)
+    print('Операция модифицирования кодов пачек выполнена')
     result.close()
 
 
+# Модифицирование кодов блоков
+def bundle_code_modify(input_file):
+    for string in input_file:
+        # Проверка на 52 и 53 символа идет потому что иногда при выгрузке кодов
+        # не ставится символ переноса строки
+        if (len(string) == 52 or len(string) == 53) and string[0:5] == "01046":
+            new_line = string[0:35]
+            with open("output.txt", "a+", encoding="utf-8") as result:
+                print(f"'{replace_quotes_json(new_line)}',", file=result)
+    print('Операция модифицирования кодов блоков выполнена')
+    result.close()
+
+
+#  Точка входа, выбор типа модицикации файлов
 def main():
     choise = input(
         "Что модифицировать?\n"
         "1 - Коды пачек (для SQL)\n"
         "2 - Коды блоков (для JSON)\n"
         "Выбор: "
-    )
+        )
     if choise == "1":
-        bundle_code_modify(input_file, choise)
+        pack_code_modify(input_file)
+    elif choise == "2":
+        bundle_code_modify(input_file)
     else:
-        bundle_code_modify(input_file, choise)
-    return choise
+        print("Введено неверное значение. Повторите ввод.")
 
 
 if __name__ == "__main__":
     main()
 
 input_file.close()
-
-# FIXME реализовать удаление запятой в последней строке кода
