@@ -42,6 +42,8 @@ def pack_code_sql_modify(input_file):
             count += 1
     result.write(output_file[:-2])
     print(f"Операция выполнена. Изменено кодов пачек: {count}.")
+    print("Нажмите Enter.")
+    exit = input()
     result.close()
 
 
@@ -58,6 +60,8 @@ def pack_code_json_modify(input_file):
             count += 1
     result.write(output_file[:-2])
     print(f"Операция выполнена. Изменено кодов пачек: {count}.")
+    print("Нажмите Enter.")
+    exit = input()
     result.close()
 
 
@@ -74,6 +78,8 @@ def bundle_code_sql_modify(input_file):
             count += 1
     result.write(output_file[:-2])
     print(f"Операция выполнена. Изменено кодов блоков: {count}.")
+    print("Нажмите Enter.")
+    exit = input()
     result.close()
 
 
@@ -89,7 +95,19 @@ def bundle_code_json_modify(input_file):
             count += 1
     result.write(output_file[:-2])
     print(f"Операция выполнена. Изменено кодов блоков: {count}.")
+    print("Нажмите Enter.")
+    exit = input()
     result.close()
+
+
+def operation(choise):
+    various = {
+        "13": "пачек для SQL",
+        "14": "пачек для JSON",
+        "23": "блоков для SQL",
+        "24": "блоков для JSON"
+    }
+    return various.get(choise)
 
 
 # Точка входа, выбор типа модицикации
@@ -106,8 +124,10 @@ def main():
         "4 - Для JSON\n"
         "Выбор: "
     )
-
     choise = code_choise + format_choise
+    print(f'Выполняется обработка кодов {operation(choise)}.')
+
+    #  проверка корректности ввода данных
     if choise not in ("13", "14", "23", "24"):
         print("Введено неверное значение, повторите ввод.")
 
