@@ -41,7 +41,7 @@ def pack_code_sql_modify(input_file):
             output_file += f"'{replace_quotes_sql(string[:25])}',\n"
             count += 1
     result.write(output_file[:-2])
-    print(f"Операция выполнена. Изменено кодов пачек: {count}.")
+    print(f"Операция выполнена. Изменено кодов пачек: {count}.\nРезультат находится в файле 'output.txt'.")
     print("Нажмите Enter.")
     exit = input()
     result.close()
@@ -59,7 +59,7 @@ def pack_code_json_modify(input_file):
             output_file += f'"{replace_quotes_json(string[:25])}",\n'
             count += 1
     result.write(output_file[:-2])
-    print(f"Операция выполнена. Изменено кодов пачек: {count}.")
+    print(f"Операция выполнена. Изменено кодов пачек: {count}.\nРезультат находится в файле 'output.txt'.")
     print("Нажмите Enter.")
     exit = input()
     result.close()
@@ -77,7 +77,7 @@ def bundle_code_sql_modify(input_file):
             output_file += f"'{replace_quotes_sql(string[0:35])}',\n"
             count += 1
     result.write(output_file[:-2])
-    print(f"Операция выполнена. Изменено кодов блоков: {count}.")
+    print(f"Операция выполнена. Изменено кодов блоков: {count}.\nРезультат находится в файле 'output.txt'.")
     print("Нажмите Enter.")
     exit = input()
     result.close()
@@ -94,7 +94,7 @@ def bundle_code_json_modify(input_file):
             output_file += f'"{replace_quotes_json(string[0:35])}",\n'
             count += 1
     result.write(output_file[:-2])
-    print(f"Операция выполнена. Изменено кодов блоков: {count}.")
+    print(f"Операция выполнена. Изменено кодов блоков: {count}.\nРезультат находится в файле 'output.txt'.")
     print("Нажмите Enter.")
     exit = input()
     result.close()
