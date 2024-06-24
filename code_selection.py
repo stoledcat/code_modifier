@@ -1,6 +1,6 @@
 import os
 
-enter = input('Убедитесь, что исходные коды находятся в файле "input.txt", затем нажмите Enter\n')
+enter = input("Убедитесь, что исходные коды находятся в файле 'input.txt', затем нажмите Enter\n")
 
 input_file = open("input.txt", encoding="utf-8")
 
@@ -121,11 +121,11 @@ def main():
         "Выбор: "
     )
     choice = code_choice + format_choice
-    print(f'Выполняется обработка кодов {operation(choice)}.')
-
     #  проверка корректности ввода данных
     if choice not in ("13", "14", "23", "24"):
         print("Введено неверное значение, повторите ввод.")
+        exit()
+    print(f'Выполняется обработка кодов {operation(choice)}.')
 
     if choice == "13":
         pack_code_sql_modify(input_file)
