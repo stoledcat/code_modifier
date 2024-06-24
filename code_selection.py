@@ -41,7 +41,9 @@ def pack_code_sql_modify(input_file):
             output_file += f"'{replace_quotes_sql(string[:25])}',\n"
             count += 1
     result.write(output_file[:-2])
-    print(f"Операция выполнена. Изменено кодов пачек: {count}.")
+    print(f"Операция выполнена. Изменено кодов пачек: {count}.\nРезультат находится в файле 'output.txt'.")
+    print("Нажмите Enter.")
+    exit = input()
     result.close()
 
 
@@ -57,7 +59,9 @@ def pack_code_json_modify(input_file):
             output_file += f'"{replace_quotes_json(string[:25])}",\n'
             count += 1
     result.write(output_file[:-2])
-    print(f"Операция выполнена. Изменено кодов пачек: {count}.")
+    print(f"Операция выполнена. Изменено кодов пачек: {count}.\nРезультат находится в файле 'output.txt'.")
+    print("Нажмите Enter.")
+    exit = input()
     result.close()
 
 
@@ -73,7 +77,9 @@ def bundle_code_sql_modify(input_file):
             output_file += f"'{replace_quotes_sql(string[0:35])}',\n"
             count += 1
     result.write(output_file[:-2])
-    print(f"Операция выполнена. Изменено кодов блоков: {count}.")
+    print(f"Операция выполнена. Изменено кодов блоков: {count}.\nРезультат находится в файле 'output.txt'.")
+    print("Нажмите Enter.")
+    exit = input()
     result.close()
 
 
@@ -88,36 +94,50 @@ def bundle_code_json_modify(input_file):
             output_file += f'"{replace_quotes_json(string[0:35])}",\n'
             count += 1
     result.write(output_file[:-2])
-    print(f"Операция выполнена. Изменено кодов блоков: {count}.")
+    print(f"Операция выполнена. Изменено кодов блоков: {count}.\nРезультат находится в файле 'output.txt'.")
+    print("Нажмите Enter.")
+    exit = input()
     result.close()
+
+
+def operation(choice):
+    various = {
+        "13": "пачек для SQL",
+        "14": "пачек для JSON",
+        "23": "блоков для SQL",
+        "24": "блоков для JSON"
+    }
+    return various.get(choice)
 
 
 # Точка входа, выбор типа модицикации
 def main():
-    choise = ""
-    code_choise = input(
+    choice = ""
+    code_choice = input(
         "Что модифицировать?\n"
         "1 - Коды пачек\n"
         "2 - Коды блоков\n"
         "Выбор: "
     )
-    format_choise = input(
+    format_choice = input(
         "3 - Для SQL\n"
         "4 - Для JSON\n"
         "Выбор: "
     )
+    choice = code_choice + format_choice
+    print(f'Выполняется обработка кодов {operation(choice)}.')
 
-    choise = code_choise + format_choise
-    if choise not in ("13", "14", "23", "24"):
+    #  проверка корректности ввода данных
+    if choice not in ("13", "14", "23", "24"):
         print("Введено неверное значение, повторите ввод.")
 
-    if choise == "13":
+    if choice == "13":
         pack_code_sql_modify(input_file)
-    elif choise == "14":
+    elif choice == "14":
         pack_code_json_modify(input_file)
-    elif choise == "23":
+    elif choice == "23":
         bundle_code_sql_modify(input_file)
-    elif choise == "24":
+    elif choice == "24":
         bundle_code_json_modify(input_file)
 
 
