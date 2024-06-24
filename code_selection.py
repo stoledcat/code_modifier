@@ -141,7 +141,7 @@ def main():
 def open_it():
     question = input('Открыть сейчас? y/n: ')
     if question == 'y':
-        os.system('output.txt')
+        os.system('output.txt')  # открытие файла в блокноте
 
 
 if __name__ == "__main__":
