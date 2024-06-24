@@ -1,3 +1,7 @@
+import os
+
+enter = input("Убедитесь, что исходные коды находятся в файле 'input.txt', затем нажмите Enter\n")
+
 input_file = open("input.txt", encoding="utf-8")
 
 # Очистка либо создание файла для сохранения результатов выборки
@@ -42,8 +46,6 @@ def pack_code_sql_modify(input_file):
             count += 1
     result.write(output_file[:-2])
     print(f"Операция выполнена. Изменено кодов пачек: {count}.\nРезультат находится в файле 'output.txt'.")
-    print("Нажмите Enter.")
-    exit = input()
     result.close()
 
 
@@ -60,8 +62,6 @@ def pack_code_json_modify(input_file):
             count += 1
     result.write(output_file[:-2])
     print(f"Операция выполнена. Изменено кодов пачек: {count}.\nРезультат находится в файле 'output.txt'.")
-    print("Нажмите Enter.")
-    exit = input()
     result.close()
 
 
@@ -78,8 +78,6 @@ def bundle_code_sql_modify(input_file):
             count += 1
     result.write(output_file[:-2])
     print(f"Операция выполнена. Изменено кодов блоков: {count}.\nРезультат находится в файле 'output.txt'.")
-    print("Нажмите Enter.")
-    exit = input()
     result.close()
 
 
@@ -95,8 +93,6 @@ def bundle_code_json_modify(input_file):
             count += 1
     result.write(output_file[:-2])
     print(f"Операция выполнена. Изменено кодов блоков: {count}.\nРезультат находится в файле 'output.txt'.")
-    print("Нажмите Enter.")
-    exit = input()
     result.close()
 
 
@@ -125,11 +121,11 @@ def main():
         "Выбор: "
     )
     choice = code_choice + format_choice
-    print(f'Выполняется обработка кодов {operation(choice)}.')
-
     #  проверка корректности ввода данных
     if choice not in ("13", "14", "23", "24"):
         print("Введено неверное значение, повторите ввод.")
+        exit()
+    print(f'Выполняется обработка кодов {operation(choice)}.')
 
     if choice == "13":
         pack_code_sql_modify(input_file)
@@ -139,6 +135,13 @@ def main():
         bundle_code_sql_modify(input_file)
     elif choice == "24":
         bundle_code_json_modify(input_file)
+    open_it()
+
+
+def open_it():
+    question = input('Открыть сейчас? y/n: ')
+    if question == 'y':
+        os.system('output.txt')
 
 
 if __name__ == "__main__":
