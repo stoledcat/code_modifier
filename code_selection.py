@@ -1,4 +1,5 @@
 import os
+import time
 
 enter = input("Убедитесь, что исходные коды находятся в файле 'input.txt', затем нажмите Enter\n")
 
@@ -7,6 +8,15 @@ input_file = open("input.txt", encoding="utf-8")
 # Очистка либо создание файла для сохранения результатов выборки
 with open("output.txt", "w", encoding="utf-8") as output:
     output.close()
+
+
+# Проверка наличия кодов в исходном файле
+def check_input_file(count):
+    if count == 0:
+        print('В файле input.txt не найдено соответствующих кодов.')
+        for j in reversed(range(0, 5)):
+            time.sleep(1)
+        exit()
 
 
 # Экранирование кавычек для SQL
@@ -44,6 +54,7 @@ def pack_code_sql_modify(input_file):
             result = open("output.txt", "a+", encoding="utf-8")
             output_file += f"'{replace_quotes_sql(string[:25])}',\n"
             count += 1
+    check_input_file(count)
     result.write(output_file[:-2])
     print(f"Операция выполнена. Изменено кодов пачек: {count}.\nРезультат находится в файле 'output.txt'.")
     result.close()
@@ -60,6 +71,7 @@ def pack_code_json_modify(input_file):
             result = open("output.txt", "a+", encoding="utf-8")
             output_file += f'"{replace_quotes_json(string[:25])}",\n'
             count += 1
+    check_input_file(count)
     result.write(output_file[:-2])
     print(f"Операция выполнена. Изменено кодов пачек: {count}.\nРезультат находится в файле 'output.txt'.")
     result.close()
@@ -76,6 +88,7 @@ def bundle_code_sql_modify(input_file):
             result = open("output.txt", "a+", encoding="utf-8")
             output_file += f"'{replace_quotes_sql(string[0:35])}',\n"
             count += 1
+    check_input_file(count)
     result.write(output_file[:-2])
     print(f"Операция выполнена. Изменено кодов блоков: {count}.\nРезультат находится в файле 'output.txt'.")
     result.close()
@@ -91,10 +104,7 @@ def bundle_code_json_modify(input_file):
             result = open("output.txt", "a+", encoding="utf-8")
             output_file += f'"{replace_quotes_json(string[0:35])}",\n'
             count += 1
-    # Проверка наличие кодов в исходном файле
-    if count == 0:
-        print('В файле input.txt не найдено кодов блоков.')
-        exit()
+    check_input_file(count)
     result.write(output_file[:-2])
     print(f"Операция выполнена. Изменено кодов блоков: {count}.\nРезультат находится в файле 'output.txt'.")
     result.close()
