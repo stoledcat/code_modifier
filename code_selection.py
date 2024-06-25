@@ -149,10 +149,10 @@ def main():
         bundle_code_sql_modify(input_file)
     elif choice == "22":
         bundle_code_json_modify(input_file)
-    open_it()
+    open_this()
 
 
-def open_it():
+def open_this():
     question = input('Открыть сейчас? y/n: ')
     if question == 'y':
         os.system('output.txt')  # открытие файла в блокноте
