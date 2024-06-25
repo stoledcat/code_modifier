@@ -132,14 +132,15 @@ def operation(choice):
 def main():
     choice = ""
     code_choice = input(
-        "Что модифицировать?\n"
-        "1 - Коды пачек\n"
-        "2 - Коды блоков\n"
+        "Выберите вид кодов:\n"
+        "1 - коды пачек\n"
+        "2 - коды блоков\n"
         "Выбор: "
     )
     format_choice = input(
-        "1 - Для SQL\n"
-        "2 - Для JSON\n"
+        "\nВыберите шаблон для форматирования:\n"
+        "1 - для SQL\n"
+        "2 - для JSON\n"
         "Выбор: "
     )
     choice = code_choice + format_choice
