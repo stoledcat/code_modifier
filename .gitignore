@@ -3,7 +3,6 @@ output.txt
 .venv/pyvenv.cfg
 .venv/Scripts/python.exe
 .venv/Scripts/pythonw.exe
-code_selection.spec
 dist/code_selection.exe
 build/code_selection/Analysis-00.toc
 build/code_selection/base_library.zip
@@ -19,3 +18,5 @@ build/code_selection/localpycs/pyimod02_importers.pyc
 build/code_selection/localpycs/pyimod03_ctypes.pyc
 build/code_selection/localpycs/pyimod04_pywin32.pyc
 build/code_selection/localpycs/struct.pyc
+code_selection.exe
+code_selection.spec
