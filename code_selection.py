@@ -1,9 +1,13 @@
 import os
 import time
+from datetime import datetime
+
 
 enter = input("Убедитесь, что исходные коды находятся в файле 'input.txt', затем нажмите Enter\n")
 
 input_file = open("input.txt", encoding="utf-8")
+
+start_time = datetime.now()
 
 # Очистка либо создание файла для сохранения результатов выборки
 with open("output.txt", "w", encoding="utf-8") as output:
@@ -58,6 +62,7 @@ def pack_code_sql_modify(input_file):
     result.write(output_file[:-2])
     print(f"Операция выполнена. Изменено кодов пачек: {count}.\nРезультат находится в файле 'output.txt'.")
     result.close()
+    time_spent()
 
 
 # Модифицирование кодов пачек для JSON
@@ -75,6 +80,7 @@ def pack_code_json_modify(input_file):
     result.write(output_file[:-2])
     print(f"Операция выполнена. Изменено кодов пачек: {count}.\nРезультат находится в файле 'output.txt'.")
     result.close()
+    time_spent()
 
 
 # Модифицирование кодов блоков для sql
@@ -92,6 +98,7 @@ def bundle_code_sql_modify(input_file):
     result.write(output_file[:-2])
     print(f"Операция выполнена. Изменено кодов блоков: {count}.\nРезультат находится в файле 'output.txt'.")
     result.close()
+    time_spent()
 
 
 def bundle_code_json_modify(input_file):
@@ -108,6 +115,7 @@ def bundle_code_json_modify(input_file):
     result.write(output_file[:-2])
     print(f"Операция выполнена. Изменено кодов блоков: {count}.\nРезультат находится в файле 'output.txt'.")
     result.close()
+    time_spent()
 
 
 def operation(choice):
@@ -150,6 +158,12 @@ def main():
     elif choice == "22":
         bundle_code_json_modify(input_file)
     open_this()
+
+
+def time_spent():
+    end_time = datetime.now()
+    result_time = end_time - start_time
+    print(f'Затраченное время: {str(result_time)[:7]}')
 
 
 def open_this():
