@@ -50,7 +50,7 @@ def pack_code_sql_modify(input_file):
     for string in input_file:
         # Проверка на 29 и 30 символа идет потому что иногда при выгрузке кодов
         # не ставится символ переноса строки
-        if (len(string) >= 26 or len(string) <= 30) and string[0:6] == "000000":
+        if (len(string) >= 26 and len(string) <= 30) and string[0:6] == "000000":
             result = open("output.txt", "a+", encoding="utf-8")
             output_file += f"'{replace_quotes_sql(string[:25])}',\n"
             count += 1
@@ -67,7 +67,7 @@ def pack_code_json_modify(input_file):
     for string in input_file:
         # Проверка на 29 и 30 символа идет потому что иногда при выгрузке кодов
         # не ставится символ переноса строки
-        if (len(string) == 29 or len(string) == 30) and string[0:6] == "000000":
+        if (len(string) >= 26 and len(string) <= 30) and string[0:6] == "000000":
             result = open("output.txt", "a+", encoding="utf-8")
             output_file += f'"{replace_quotes_json(string[:25])}",\n'
             count += 1
