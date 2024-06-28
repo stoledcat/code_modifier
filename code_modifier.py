@@ -3,7 +3,8 @@ import time
 from datetime import datetime
 
 
-enter = input("Убедитесь, что исходные коды находятся в файле 'input.txt', затем нажмите Enter\n")
+enter = input("Убедитесь, что исходные коды находятся в файле 'input.txt', \
+затем нажмите Enter\n")
 
 input_file = open("input.txt", encoding="utf-8")
 
@@ -60,7 +61,8 @@ def pack_code_sql_modify(input_file):
             count += 1
     check_input_file(count)
     result.write(output_file[:-2])
-    print(f"Операция выполнена. Изменено кодов пачек: {count}.\nРезультат находится в файле 'output.txt'.")
+    print(f"Операция выполнена. Изменено кодов пачек: {count}. \n\
+Результат находится в файле 'output.txt'.")
     result.close()
     time_spent()
 
@@ -78,7 +80,8 @@ def pack_code_json_modify(input_file):
             count += 1
     check_input_file(count)
     result.write(output_file[:-2])
-    print(f"Операция выполнена. Изменено кодов пачек: {count}.\nРезультат находится в файле 'output.txt'.")
+    print(f"Операция выполнена. Изменено кодов пачек: {count}. \n\
+Результат находится в файле 'output.txt'.")
     result.close()
     time_spent()
 
@@ -96,7 +99,8 @@ def bundle_code_sql_modify(input_file):
             count += 1
     check_input_file(count)
     result.write(output_file[:-2])
-    print(f"Операция выполнена. Изменено кодов блоков: {count}.\nРезультат находится в файле 'output.txt'.")
+    print(f"Операция выполнена. Изменено кодов блоков: {count}. \n\
+Результат находится в файле 'output.txt'.")
     result.close()
     time_spent()
 
@@ -113,7 +117,8 @@ def bundle_code_json_modify(input_file):
             count += 1
     check_input_file(count)
     result.write(output_file[:-2])
-    print(f"Операция выполнена. Изменено кодов блоков: {count}.\nРезультат находится в файле 'output.txt'.")
+    print(f"Операция выполнена. Изменено кодов блоков: {count}. \n\
+Результат находится в файле 'output.txt'.")
     result.close()
     time_spent()
 
