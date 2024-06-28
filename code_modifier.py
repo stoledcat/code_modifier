@@ -5,8 +5,8 @@ import pyperclip
 from search_duplicates import search_duplicates
 
 
-enter = input("Убедитесь, что исходные коды находятся в файле 'input.txt', \
-затем нажмите Enter ")
+# enter = input("Убедитесь, что исходные коды находятся в файле 'input.txt', \
+# затем нажмите Enter ")
 
 input_file = open("input.txt", encoding="utf-8")
 
@@ -140,7 +140,7 @@ def operation(choice):
 
 
 # Точка входа, выбор типа модицикации
-def main():
+def main(input_file):
     search_duplicates(input_file)
     choice = ""
     code_choice = input(
@@ -194,6 +194,6 @@ def open_this():
 
 
 if __name__ == "__main__":
-    main()
+    main(input_file)
 
 input_file.close()

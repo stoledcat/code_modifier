@@ -12,21 +12,23 @@
 def search_duplicates(input_file):
     dict_for_duplicates = {}
     line_number = 0
-    dublicates_counter = 0
+    duplicates_counter = 0
     for j in input_file:
         line_number += 1
+        j = j[:52]
         if j not in dict_for_duplicates:
             dict_for_duplicates[j] = 1
         else:
             print(f"\nВ списке кодов присутствует дубликат: {j} ")
-            if len(j) == 52 or len(j) == 53:
+            if len(j) >= 52:
                 print(
                     f"Номер строки с дубликатом: {line_number}\nКод блока: {j[18:25]}\nSKU: {j[44:]}"
                 )
-                dublicates_counter += 1
+                duplicates_counter += 1
 
-    if dublicates_counter != 0:
+    if duplicates_counter != 0:
         input("\nПроверьте список кодов и нажмите Enter для выхода ")
+        exit()
 
     # for j in reversed(range(0, 5)):
     #     time.sleep(1)
@@ -34,3 +36,4 @@ def search_duplicates(input_file):
 
 
 # search_duplicates(input_file)
+
