@@ -1,6 +1,7 @@
 import os
 import time
 from datetime import datetime
+import pyperclip
 
 
 enter = input("Убедитесь, что исходные коды находятся в файле 'input.txt', \
@@ -173,9 +174,15 @@ def time_spent():
 
 
 def open_this():
-    question = input('Открыть сейчас? y/n: ')
-    if question == 'y':
-        os.system('output.txt')  # открытие файла в блокноте
+    question = input('1 - открыть файл\n'
+                     '2 - скопировать результаты в буфер\n'
+                     'Выбор: ')
+    if question == '1':
+        os.system('output.txt')
+    elif question == '2':
+        with open("output.txt", 'r', encoding="utf-8") as result:
+            clipboard = result.read()
+            pyperclip.copy(clipboard)
 
 
 if __name__ == "__main__":
