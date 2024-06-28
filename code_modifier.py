@@ -182,7 +182,7 @@ def open_this():
     elif question == '2':
         with open("output.txt", 'r', encoding="utf-8") as result:
             clipboard = result.read()
-            pyperclip.copy(clipboard + '\n')
+            pyperclip.copy(clipboard)
     else:
         print('Неверный выбор')
 
