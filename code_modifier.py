@@ -55,6 +55,7 @@ def pack_code_sql_modify(input_file):
     count = 0
     output_file = ''
     for string in input_file:
+        string = string.strip()
         # Проверка на 29 и 30 символа идет потому что иногда при выгрузке кодов
         # не ставится символ переноса строки
         if (len(string) >= 26 and len(string) <= 30) and string[0:6] == "000000":
@@ -74,6 +75,7 @@ def pack_code_json_modify(input_file):
     count = 0
     output_file = ''
     for string in input_file:
+        string = string.strip()
         # Проверка на 29 и 30 символа идет потому что иногда при выгрузке кодов
         # не ставится символ переноса строки
         if (len(string) >= 26 and len(string) <= 30) and string[0:6] == "000000":
@@ -93,6 +95,7 @@ def bundle_code_sql_modify(input_file):
     count = 0
     output_file = ''
     for string in input_file:
+        string = string.strip()
         # Проверка на 52 и 53 символа идет потому что иногда при выгрузке кодов
         # не ставится символ переноса строки
         if (len(string) == 52 or len(string) == 53) and string[0:5] == "01046":
@@ -111,6 +114,7 @@ def bundle_code_json_modify(input_file):
     count = 0
     output_file = ''
     for string in input_file:
+        string = string.strip()
         # Проверка на 52 и 53 символа идет потому что иногда при выгрузке кодов
         # не ставится символ переноса строки
         if (len(string) == 52 or len(string) == 53) and string[0:5] == "01046":
