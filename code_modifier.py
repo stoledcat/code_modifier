@@ -174,7 +174,7 @@ def time_spent():
 
 
 def open_this():
-    question = input('1 - открыть файл\n'
+    question = input('\n1 - открыть файл\n'
                      '2 - скопировать результаты в буфер\n'
                      'Выбор: ')
     if question == '1':
