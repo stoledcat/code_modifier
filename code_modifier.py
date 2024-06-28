@@ -4,7 +4,7 @@ from datetime import datetime
 
 
 enter = input("Убедитесь, что исходные коды находятся в файле 'input.txt', \
-затем нажмите Enter\n")
+затем нажмите Enter ")
 
 input_file = open("input.txt", encoding="utf-8")
 
