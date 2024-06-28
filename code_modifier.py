@@ -2,6 +2,7 @@ import os
 import time
 from datetime import datetime
 import pyperclip
+from search_duplicates import search_duplicates
 
 
 enter = input("Убедитесь, что исходные коды находятся в файле 'input.txt', \
@@ -136,6 +137,7 @@ def operation(choice):
 
 # Точка входа, выбор типа модицикации
 def main():
+    search_duplicates(input_file)
     choice = ""
     code_choice = input(
         "Выберите вид кодов:\n"
