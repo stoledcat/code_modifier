@@ -183,6 +183,8 @@ def open_this():
         with open("output.txt", 'r', encoding="utf-8") as result:
             clipboard = result.read()
             pyperclip.copy(clipboard)
+    else:
+        print('Неверный выбор')
 
 
 if __name__ == "__main__":
