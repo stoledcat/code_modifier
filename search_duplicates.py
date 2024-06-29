@@ -1,11 +1,21 @@
+"""
+pack_duplicates_check - поиск дубликатов среди кодов пачек
+bundle_duplicates_check - поиск дубликатов среди кодов пачек
+
+В каждой из функций создается словарь,
+куда добавляются проверяемые коды при условии,
+что ключ в этом словаре отсутствует. Если же таковой имеется,
+возвращается сам код, номер строки с ним,
+а также код пачки, либо блока + SKU (в случае с проверкой кодов блоков)
+"""
+
+
 def pack_duplicates_check(duplicate_check):
     dict_for_duplicates = {}
     line_number = 0
     duplicates_counter = 0
-    # string = 0
     for j in duplicate_check:
         line_number += 1
-        # string = len(j)
         j = j[:29]
         if j not in dict_for_duplicates and j != '\n':
             dict_for_duplicates[j[:29]] = 1
