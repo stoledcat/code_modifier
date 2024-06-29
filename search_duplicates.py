@@ -1,19 +1,33 @@
-# input_file = [
-#     '01046200657008042132mhd;U800519700093N/UE24016142738',
-#     '010462006570080421ooB/sE+800519700093/7fB24016142738',
-#     '0104620065700804216gvYc/z800519700093Bbgn24016142738',
-#     '010462006570080421ooB/sE+800519700093/7fB24016142738',
-#     '0104620065700804216gvYc/z800519700093Bbgn24016142738'
-#     ]
+# BUG разделить проверки пачек и блоков
 
-# TODO завершить объединение двух файлов программы
-
-
-def search_duplicates(input_file):
+def pack_duplicates_check(duplicate_check):
     dict_for_duplicates = {}
     line_number = 0
     duplicates_counter = 0
-    for j in input_file:
+    for j in duplicate_check:
+        line_number += 1
+        j = j[:29]
+        if j not in dict_for_duplicates:
+            dict_for_duplicates[j] = 1
+        else:
+            print(f"\nВ списке кодов присутствует дубликат: {j} ")
+            if len(j) >= 29 and len(j) < 35:
+                print(
+                    f"Номер строки с дубликатом: {line_number}\nКод пачки: {j[15:20]}"
+                )
+                duplicates_counter += 1
+
+    if duplicates_counter != 0:
+        input("\nПроверьте список кодов по указанным строкам \
+и нажмите Enter для выхода ")
+        exit()
+
+
+def bundle_duplicates_check(duplicate_check):
+    dict_for_duplicates = {}
+    line_number = 0
+    duplicates_counter = 0
+    for j in duplicate_check:
         line_number += 1
         j = j[:52]
         if j not in dict_for_duplicates:
@@ -27,13 +41,6 @@ def search_duplicates(input_file):
                 duplicates_counter += 1
 
     if duplicates_counter != 0:
-        input("\nПроверьте список кодов и нажмите Enter для выхода ")
+        input("\nПроверьте список кодов по указанным строкам \
+и нажмите Enter для выхода ")
         exit()
-
-    # for j in reversed(range(0, 5)):
-    #     time.sleep(1)
-    # exit()
-
-
-# search_duplicates(input_file)
-

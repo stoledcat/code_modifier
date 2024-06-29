@@ -2,13 +2,14 @@ import os
 import time
 from datetime import datetime
 import pyperclip
-from search_duplicates import search_duplicates
+from search_duplicates import bundle_duplicates_check, pack_duplicates_check
 
 
 # enter = input("Убедитесь, что исходные коды находятся в файле 'input.txt', \
 # затем нажмите Enter ")
 
 input_file = open("input.txt", encoding="utf-8")
+duplicate_check = open("input.txt", encoding="utf-8")
 
 start_time = datetime.now()
 
@@ -21,7 +22,7 @@ with open("output.txt", "w", encoding="utf-8") as output:
 def check_input_file(count):
     if count == 0:
         print('В файле input.txt не найдено соответствующих кодов.')
-        for j in reversed(range(0, 5)):
+        for t in reversed(range(0, 5)):
             time.sleep(1)
         exit()
 
@@ -114,7 +115,7 @@ def bundle_code_json_modify(input_file):
     count = 0
     output_file = ''
     for string in input_file:
-        string = string.strip()
+        # string = string.strip()
         # Проверка на 52 и 53 символа идет потому что иногда при выгрузке кодов
         # не ставится символ переноса строки
         if (len(string) == 52 or len(string) == 53) and string[0:5] == "01046":
@@ -141,7 +142,7 @@ def operation(choice):
 
 # Точка входа, выбор типа модицикации
 def main(input_file):
-    search_duplicates(input_file)
+    # BUG
     choice = ""
     code_choice = input(
         "Выберите вид кодов:\n"
@@ -162,13 +163,18 @@ def main(input_file):
         exit()
     print(f'Выполняется обработка кодов {operation(choice)}.')
 
+# BUG
     if choice == "11":
+        pack_duplicates_check(duplicate_check)
         pack_code_sql_modify(input_file)
     elif choice == "12":
+        pack_duplicates_check(duplicate_check)
         pack_code_json_modify(input_file)
     elif choice == "21":
+        bundle_duplicates_check(duplicate_check)
         bundle_code_sql_modify(input_file)
     elif choice == "22":
+        bundle_duplicates_check(duplicate_check)
         bundle_code_json_modify(input_file)
     open_this()
 
@@ -181,7 +187,7 @@ def time_spent():
 
 def open_this():
     question = input('\n1 - открыть файл\n'
-                     '2 - скопировать результаты в буфер\n'
+                     '2 - скопировать результат в буфер\n'
                      'Выбор: ')
     if question == '1':
         os.system('output.txt')
