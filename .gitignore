@@ -1,5 +1,6 @@
 input.txt
 output.txt
+*.pyc
 .venv/pyvenv.cfg
 .venv/Scripts/python.exe
 .venv/Scripts/pythonw.exe
@@ -36,5 +37,4 @@ build/code_modifier/localpycs/pyimod04_pywin32.pyc
 build/code_modifier/localpycs/struct.pyc
 dist/code_modifier.exe
 code_modifier.spec
-__pycache__/search_duplicates.cpython-312.pyc
 __pycache__/search_duplicates.cpython-312.pyc
