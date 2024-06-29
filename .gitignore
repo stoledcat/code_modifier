@@ -1,5 +1,6 @@
 input.txt
 output.txt
+*.pyc
 .venv/pyvenv.cfg
 .venv/Scripts/python.exe
 .venv/Scripts/pythonw.exe

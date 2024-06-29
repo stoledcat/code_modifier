@@ -1,11 +1,15 @@
 import os
 import time
 from datetime import datetime
+import pyperclip
+from search_duplicates import bundle_duplicates_check, pack_duplicates_check
 
 
-enter = input("Убедитесь, что исходные коды находятся в файле 'input.txt', затем нажмите Enter\n")
+# enter = input("Убедитесь, что исходные коды находятся в файле 'input.txt', \
+# затем нажмите Enter ")
 
 input_file = open("input.txt", encoding="utf-8")
+duplicate_check = open("input.txt", encoding="utf-8")
 
 start_time = datetime.now()
 
@@ -18,7 +22,7 @@ with open("output.txt", "w", encoding="utf-8") as output:
 def check_input_file(count):
     if count == 0:
         print('В файле input.txt не найдено соответствующих кодов.')
-        for j in reversed(range(0, 5)):
+        for t in reversed(range(0, 5)):
             time.sleep(1)
         exit()
 
@@ -52,6 +56,7 @@ def pack_code_sql_modify(input_file):
     count = 0
     output_file = ''
     for string in input_file:
+        string = string.strip()
         # Проверка на 29 и 30 символа идет потому что иногда при выгрузке кодов
         # не ставится символ переноса строки
         if (len(string) >= 26 and len(string) <= 30) and string[0:6] == "000000":
@@ -60,7 +65,8 @@ def pack_code_sql_modify(input_file):
             count += 1
     check_input_file(count)
     result.write(output_file[:-2])
-    print(f"Операция выполнена. Изменено кодов пачек: {count}.\nРезультат находится в файле 'output.txt'.")
+    print(f"Операция выполнена. Изменено кодов пачек: {count}. \n\
+Результат находится в файле 'output.txt'.")
     result.close()
     time_spent()
 
@@ -70,6 +76,7 @@ def pack_code_json_modify(input_file):
     count = 0
     output_file = ''
     for string in input_file:
+        string = string.strip()
         # Проверка на 29 и 30 символа идет потому что иногда при выгрузке кодов
         # не ставится символ переноса строки
         if (len(string) >= 26 and len(string) <= 30) and string[0:6] == "000000":
@@ -78,7 +85,8 @@ def pack_code_json_modify(input_file):
             count += 1
     check_input_file(count)
     result.write(output_file[:-2])
-    print(f"Операция выполнена. Изменено кодов пачек: {count}.\nРезультат находится в файле 'output.txt'.")
+    print(f"Операция выполнена. Изменено кодов пачек: {count}. \n\
+Результат находится в файле 'output.txt'.")
     result.close()
     time_spent()
 
@@ -88,6 +96,7 @@ def bundle_code_sql_modify(input_file):
     count = 0
     output_file = ''
     for string in input_file:
+        string = string.strip()
         # Проверка на 52 и 53 символа идет потому что иногда при выгрузке кодов
         # не ставится символ переноса строки
         if (len(string) == 52 or len(string) == 53) and string[0:5] == "01046":
@@ -96,7 +105,8 @@ def bundle_code_sql_modify(input_file):
             count += 1
     check_input_file(count)
     result.write(output_file[:-2])
-    print(f"Операция выполнена. Изменено кодов блоков: {count}.\nРезультат находится в файле 'output.txt'.")
+    print(f"Операция выполнена. Изменено кодов блоков: {count}. \n\
+Результат находится в файле 'output.txt'.")
     result.close()
     time_spent()
 
@@ -105,6 +115,7 @@ def bundle_code_json_modify(input_file):
     count = 0
     output_file = ''
     for string in input_file:
+        # string = string.strip()
         # Проверка на 52 и 53 символа идет потому что иногда при выгрузке кодов
         # не ставится символ переноса строки
         if (len(string) == 52 or len(string) == 53) and string[0:5] == "01046":
@@ -113,7 +124,8 @@ def bundle_code_json_modify(input_file):
             count += 1
     check_input_file(count)
     result.write(output_file[:-2])
-    print(f"Операция выполнена. Изменено кодов блоков: {count}.\nРезультат находится в файле 'output.txt'.")
+    print(f"Операция выполнена. Изменено кодов блоков: {count}. \n\
+Результат находится в файле 'output.txt'.")
     result.close()
     time_spent()
 
@@ -129,7 +141,7 @@ def operation(choice):
 
 
 # Точка входа, выбор типа модицикации
-def main():
+def main(input_file):
     choice = ""
     code_choice = input(
         "Выберите вид кодов:\n"
@@ -151,12 +163,16 @@ def main():
     print(f'Выполняется обработка кодов {operation(choice)}.')
 
     if choice == "11":
+        pack_duplicates_check(duplicate_check)
         pack_code_sql_modify(input_file)
     elif choice == "12":
+        pack_duplicates_check(duplicate_check)
         pack_code_json_modify(input_file)
     elif choice == "21":
+        bundle_duplicates_check(duplicate_check)
         bundle_code_sql_modify(input_file)
     elif choice == "22":
+        bundle_duplicates_check(duplicate_check)
         bundle_code_json_modify(input_file)
     open_this()
 
@@ -168,12 +184,20 @@ def time_spent():
 
 
 def open_this():
-    question = input('Открыть сейчас? y/n: ')
-    if question == 'y':
-        os.system('output.txt')  # открытие файла в блокноте
+    question = input('\n1 - открыть файл\n'
+                     '2 - скопировать результат в буфер\n'
+                     'Выбор: ')
+    if question == '1':
+        os.system('output.txt')
+    elif question == '2':
+        with open("output.txt", 'r', encoding="utf-8") as result:
+            clipboard = result.read()
+            pyperclip.copy(clipboard)
+    else:
+        print('Неверный выбор')
 
 
 if __name__ == "__main__":
-    main()
+    main(input_file)
 
 input_file.close()
