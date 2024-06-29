@@ -142,7 +142,6 @@ def operation(choice):
 
 # Точка входа, выбор типа модицикации
 def main(input_file):
-    # BUG
     choice = ""
     code_choice = input(
         "Выберите вид кодов:\n"
@@ -163,7 +162,6 @@ def main(input_file):
         exit()
     print(f'Выполняется обработка кодов {operation(choice)}.')
 
-# BUG
     if choice == "11":
         pack_duplicates_check(duplicate_check)
         pack_code_sql_modify(input_file)
