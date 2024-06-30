@@ -115,7 +115,7 @@ def bundle_code_json_modify(input_file):
     count = 0
     output_file = ''
     for string in input_file:
-        # string = string.strip()
+        string = string.strip()
         # Проверка на 52 и 53 символа идет потому что иногда при выгрузке кодов
         # не ставится символ переноса строки
         if (len(string) == 52 or len(string) == 53) and string[0:5] == "01046":
