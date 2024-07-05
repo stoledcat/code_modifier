@@ -54,7 +54,7 @@ def pack_code_sql_modify(input_file):
     output_file = ''
     for string in input_file:
         string = string.strip()
-        # Проверка на 29 и 30 символа идет потому что иногда при выгрузке кодов
+        # Проверка на 30 символов идет потому что иногда при выгрузке кодов
         # не ставится символ переноса строки
         if (len(string) >= 22 and len(string) <= 30) and string[0:6] == "000000":
             result = open("output.txt", "a+", encoding="utf-8")
@@ -74,7 +74,7 @@ def pack_code_json_modify(input_file):
     output_file = ''
     for string in input_file:
         string = string.strip()
-        # Проверка на 29 и 30 символа идет потому что иногда при выгрузке кодов
+        # Проверка 30 символов идет потому что иногда при выгрузке кодов
         # не ставится символ переноса строки
         if (len(string) >= 22 and len(string) <= 30) and string[0:6] == "000000":
             result = open("output.txt", "a+", encoding="utf-8")
