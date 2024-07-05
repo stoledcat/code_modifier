@@ -9,7 +9,7 @@ bundle_duplicates_check - поиск дубликатов среди кодов 
 а также код пачки, либо блока + SKU (в случае с проверкой кодов блоков)
 """
 
-# TODO реализовать запрос на повторную проверку кодов, если стретятся дубликаты
+# TODO сделать запрос на повторную проверку кодов, если встретятся дубликаты
 
 
 def pack_duplicates_check(duplicate_check):
@@ -24,15 +24,17 @@ def pack_duplicates_check(duplicate_check):
                 dict_for_duplicates[code] = 1
         else:
             if len(list_code) <= 35:
-                print(f"\nВ списке кодов присутствует дубликат\nКод пачки: {code[14:21]} ")
                 print(
-                    f"Номер строки с дубликатом: {line_number}\n"
+                    f"\nВ списке кодов присутствует дубликат\nКод пачки: {code[14:21]} "
                 )
+                print(f"Номер строки с дубликатом: {line_number}\n")
             duplicates_counter += 1
 
     if duplicates_counter != 0:
-        input("\nПроверьте список кодов по указанным строкам \
-и нажмите Enter для выхода ")
+        input(
+            "\nПроверьте список кодов по указанным строкам \
+и нажмите Enter для выхода "
+        )
         exit()
 
 
@@ -55,6 +57,8 @@ def bundle_duplicates_check(duplicate_check):
                 duplicates_counter += 1
 
     if duplicates_counter != 0:
-        input("\nПроверьте список кодов по указанным строкам \
-и нажмите Enter для выхода ")
+        input(
+            "\nПроверьте список кодов по указанным строкам \
+и нажмите Enter для выхода "
+        )
         exit()
