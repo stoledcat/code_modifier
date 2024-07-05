@@ -9,6 +9,8 @@ bundle_duplicates_check - поиск дубликатов среди кодов 
 а также код пачки, либо блока + SKU (в случае с проверкой кодов блоков)
 """
 
+# TODO исправить сообщения о дублях при пустых строках
+
 
 def pack_duplicates_check(duplicate_check):
     dict_for_duplicates = {}
