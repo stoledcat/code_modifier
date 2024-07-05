@@ -9,6 +9,8 @@ bundle_duplicates_check - поиск дубликатов среди кодов 
 а также код пачки, либо блока + SKU (в случае с проверкой кодов блоков)
 """
 
+# TODO реализовать запрос на повторную проверку кодов, если будут дубликаты
+
 
 def pack_duplicates_check(duplicate_check):
     dict_for_duplicates = {}
@@ -17,11 +19,12 @@ def pack_duplicates_check(duplicate_check):
     for j in duplicate_check:
         line_number += 1
         j = j[:29]
-        if j not in dict_for_duplicates and j != '\n':
-            dict_for_duplicates[j[:29]] = 1
+        if j not in dict_for_duplicates:
+            if j != '\n':
+               dict_for_duplicates[j] = 1
         else:
             print(f"\nВ списке кодов присутствует дубликат: {j} ")
-            if len(j) >= 29 and len(j) < 35:
+            if len(j) >= 24 and len(j) < 35:
                 print(
                     f"Номер строки с дубликатом: {line_number}\nКод пачки: {j[14:21]}"
                 )
@@ -40,8 +43,9 @@ def bundle_duplicates_check(duplicate_check):
     for j in duplicate_check:
         line_number += 1
         j = j[:52]
-        if j not in dict_for_duplicates and j != '\n':
-            dict_for_duplicates[j] = 1
+        if j not in dict_for_duplicates:
+            if j != '\n':
+               dict_for_duplicates[j] = 1
         else:
             print(f"\nВ списке кодов присутствует дубликат: {j} ")
             if len(j) >= 52:
