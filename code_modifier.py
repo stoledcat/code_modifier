@@ -54,9 +54,9 @@ def pack_code_sql_modify(input_file):
     output_file = ''
     for string in input_file:
         string = string.strip()
-        # Проверка на 30 символов идет потому что иногда при выгрузке кодов
-        # не ставится символ переноса строки
-        if (len(string) >= 22 and len(string) <= 30) and string[0:6] == "000000":
+        # Проверка идет до 30 символов, потому что иногда при выгрузке кодов
+        # не ставится символ переноса строки, либо ставятся пробелы
+        if (len(string) >= 21 and len(string) <= 30) and string[0:6] == "000000":
             result = open("output.txt", "a+", encoding="utf-8")
             output_file += f"'{replace_quotes_sql(string[:25])}',\n"
             count += 1
@@ -74,9 +74,9 @@ def pack_code_json_modify(input_file):
     output_file = ''
     for string in input_file:
         string = string.strip()
-        # Проверка 30 символов идет потому что иногда при выгрузке кодов
-        # не ставится символ переноса строки
-        if (len(string) >= 22 and len(string) <= 30) and string[0:6] == "000000":
+        # Проверка идет до 30 символов, потому что иногда при выгрузке кодов
+        # не ставится символ переноса строки, либо ставятся пробелы
+        if (len(string) >= 21 and len(string) <= 30) and string[0:6] == "000000":
             result = open("output.txt", "a+", encoding="utf-8")
             output_file += f'"{replace_quotes_json(string[:25])}",\n'
             count += 1
@@ -95,7 +95,7 @@ def bundle_code_sql_modify(input_file):
     for string in input_file:
         string = string.strip()
         # Проверка на 52 и 53 символа идет потому что иногда при выгрузке кодов
-        # не ставится символ переноса строки
+        # не ставится символ переноса строки, либо ставятся пробелы
         if (len(string) == 52 or len(string) == 53) and string[0:5] == "01046":
             result = open("output.txt", "a+", encoding="utf-8")
             output_file += f"'{replace_quotes_sql(string[0:35])}',\n"
@@ -114,7 +114,7 @@ def bundle_code_json_modify(input_file):
     for string in input_file:
         string = string.strip()
         # Проверка на 52 и 53 символа идет потому что иногда при выгрузке кодов
-        # не ставится символ переноса строки
+        # не ставится символ переноса строки, либо ставятся пробелы
         if (len(string) == 52 or len(string) == 53) and string[0:5] == "01046":
             result = open("output.txt", "a+", encoding="utf-8")
             output_file += f'"{replace_quotes_json(string[0:35])}",\n'
