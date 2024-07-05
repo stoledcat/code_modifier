@@ -5,11 +5,6 @@ import pyperclip
 from search_duplicates import bundle_duplicates_check, pack_duplicates_check
 
 
-# enter = input("Убедитесь, что исходные коды находятся в файле 'input.txt', \
-# затем нажмите Enter ")
-
-# TODO 
-
 input_file = open("input.txt", encoding="utf-8")
 duplicate_check = open("input.txt", encoding="utf-8")
 
@@ -187,7 +182,7 @@ def time_spent():
 
 def open_this():
     question = input('\n1 - открыть файл\n'
-                     '2 - скопировать результат в буфер\n'
+                     '2 - скопировать результат в буфер обмена\n'
                      'Выбор: ')
     if question == '1':
         os.system('output.txt')
