@@ -18,13 +18,13 @@ def pack_duplicates_check(duplicate_check):
     duplicates_counter = 0
     for j in duplicate_check:
         line_number += 1
-        j = j[:29]
+        j = j[:25]
         if j not in dict_for_duplicates:
             if j != '\n':
                dict_for_duplicates[j] = 1
         else:
             print(f"\nВ списке кодов присутствует дубликат: {j} ")
-            if len(j) >= 24 and len(j) < 35:
+            if len(j) >= 25 and len(j) < 35:
                 print(
                     f"Номер строки с дубликатом: {line_number}\nКод пачки: {j[14:21]}"
                 )
