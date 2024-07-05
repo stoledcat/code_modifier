@@ -23,12 +23,12 @@ def pack_duplicates_check(duplicate_check):
             if code not in ('', '\n'):
                 dict_for_duplicates[code] = 1
         else:
-            if len(list_code) <= 35:
+            if len(code) <= 35 and code[:6] == '000000':
                 print(
                     f"\nВ списке кодов присутствует дубликат\nКод пачки: {code[14:21]} "
                 )
                 print(f"Номер строки с дубликатом: {line_number}\n")
-            duplicates_counter += 1
+                duplicates_counter += 1
 
     if duplicates_counter != 0:
         input(
