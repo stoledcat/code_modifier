@@ -96,7 +96,7 @@ def bundle_code_sql_modify(input_file):
         string = string.strip()
         # Проверка на 52 и 53 символа идет потому что иногда при выгрузке кодов
         # не ставится символ переноса строки, либо ставятся пробелы
-        if (len(string) == 52 or len(string) == 53) and string[0:5] == "01046":
+        if (len(string) >= 35 or len(string) == 53) and string[0:5] == "01046":
             result = open("output.txt", "a+", encoding="utf-8")
             output_file += f"'{replace_quotes_sql(string[0:35])}',\n"
             count += 1
@@ -115,7 +115,7 @@ def bundle_code_json_modify(input_file):
         string = string.strip()
         # Проверка на 52 и 53 символа идет потому что иногда при выгрузке кодов
         # не ставится символ переноса строки, либо ставятся пробелы
-        if (len(string) == 52 or len(string) == 53) and string[0:5] == "01046":
+        if (len(string) >= 35 or len(string) == 53) and string[0:5] == "01046":
             result = open("output.txt", "a+", encoding="utf-8")
             output_file += f'"{replace_quotes_json(string[0:35])}",\n'
             count += 1
