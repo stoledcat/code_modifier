@@ -37,3 +37,5 @@ build/code_modifier/localpycs/pyimod04_pywin32.pyc
 build/code_modifier/localpycs/struct.pyc
 dist/code_modifier.exe
 code_modifier.spec
+duplicates1.txt
+duplicates2.txt
