@@ -3,7 +3,6 @@ import time
 from datetime import datetime
 import pyperclip
 from search_duplicates import bundle_duplicates_check, pack_duplicates_check
-# from delete_duplicates import compare_files, delete_duplicates
 
 
 input_file = open("input.txt", encoding="utf-8")
@@ -11,12 +10,12 @@ duplicate_check = open("input.txt", encoding="utf-8")
 
 start_time = datetime.now()
 
-# Очистка либо создание файла для сохранения результатов выборки
+# очистить либо создать файл для сохранения результатов выборки
 with open("output.txt", "w", encoding="utf-8") as output:
     output.close()
 
 
-# Проверка наличия кодов в исходном файле
+# проверить наличие кодов в исходном файле
 def check_input_file(count):
     if count == 0:
         print("В файле input.txt не найдено соответствующих кодов.")
@@ -25,7 +24,7 @@ def check_input_file(count):
         exit()
 
 
-# Экранирование кавычек для SQL
+# экранировать кавычки для SQL
 def replace_quotes_sql(new_line):
     out_line = ""
     for symbol in new_line:
@@ -37,7 +36,7 @@ def replace_quotes_sql(new_line):
     return out_line
 
 
-# Экранирование кавычек для json
+# экранировать кавычки для json
 def replace_quotes_json(new_line):
     out_line = ""
     for symbol in new_line:
@@ -49,7 +48,7 @@ def replace_quotes_json(new_line):
     return out_line
 
 
-# Модифицирование кодов пачек для SQL
+# модифицировать коды пачек для SQL
 def pack_code_sql_modify(input_file):
     count = 0
     output_file = ""
@@ -71,7 +70,7 @@ def pack_code_sql_modify(input_file):
     time_spent()
 
 
-# Модифицирование кодов пачек для JSON
+# модифицировать коды пачек для JSON
 def pack_code_json_modify(input_file):
     count = 0
     output_file = ""
@@ -93,13 +92,13 @@ def pack_code_json_modify(input_file):
     time_spent()
 
 
-# Модифицирование кодов блоков для sql
+# модифицировать коды блоков для sql
 def bundle_code_sql_modify(input_file):
     count = 0
     output_file = ""
     for string in input_file:
         string = string.strip()
-        # Проверка на 52 и 53 символа идет потому что иногда при выгрузке кодов
+        # Проверка на 35 и 53 символа идет потому что иногда при выгрузке кодов
         # не ставится символ переноса строки, либо ставятся пробелы
         if (len(string) >= 35 or len(string) == 53) and string[0:5] == "01046":
             result = open("output.txt", "a+", encoding="utf-8")
@@ -120,7 +119,7 @@ def bundle_code_json_modify(input_file):
     output_file = ""
     for string in input_file:
         string = string.strip()
-        # Проверка на 52 и 53 символа идет потому что иногда при выгрузке кодов
+        # Проверка на 35 и 53 символа идет потому что иногда при выгрузке кодов
         # не ставится символ переноса строки, либо ставятся пробелы
         if (len(string) >= 35 or len(string) == 53) and string[0:5] == "01046":
             result = open("output.txt", "a+", encoding="utf-8")
@@ -146,7 +145,7 @@ def operation(choice):
     return various.get(choice)
 
 
-# Точка входа, выбор типа модицикации
+# точка входа, выбор типа модицикации
 def main():
     if select_operation() == "1":
         compare_files()
@@ -193,6 +192,7 @@ def time_spent():
     print(f"Затраченное время: {str(result_time)[:7]}")
 
 
+# выбрать действие с результатом обработки файла
 def open_this():
     question = input(
         "\n1 - открыть файл\n" "2 - скопировать результат в буфер обмена\n" "Выбор: "
@@ -207,6 +207,7 @@ def open_this():
         print("Неверный выбор")
 
 
+# выбрать действия при запуске программы
 def select_operation():
     choice = input(
         "Выберите операцию:\n\
@@ -217,6 +218,8 @@ def select_operation():
     return choice
 
 
+# сравнить два файла с кодами
+# выбрать больший из них, из которого будут удалены коды другого файла
 def compare_files():
     infile1 = open("duplicates1.txt", "r", encoding="utf-8").readlines()
     infile2 = open("duplicates2.txt", "r", encoding="utf-8").readlines()
@@ -226,6 +229,9 @@ def compare_files():
         delete_duplicates(infile2, infile1)
 
 
+# удалить дубликаты
+# по факту дубликаты не будут добавлены в новую переменную с корректными кодами
+# новые коды в итоге записываются в выходной файл
 def delete_duplicates(file1, file2):
     result = ""
     tempfile = ""
@@ -243,6 +249,7 @@ def delete_duplicates(file1, file2):
         modify_code(input_file)
 
 
+# запросить, в какой файл будет сохранен результат обработки
 def set_outfile():
     print("В какой файл сохранить коды?")
     set_file = input(
