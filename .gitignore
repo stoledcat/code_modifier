@@ -39,3 +39,5 @@ dist/code_modifier.exe
 code_modifier.spec
 duplicates1.txt
 duplicates2.txt
+result.txt
+missing_codes.txt
