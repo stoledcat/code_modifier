@@ -3,6 +3,7 @@ import time
 from datetime import datetime
 import pyperclip
 from search_duplicates import bundle_duplicates_check, pack_duplicates_check
+from find_missing_code import find_missing_code
 
 
 input_file = open("input.txt", encoding="utf-8")
@@ -147,8 +148,11 @@ def operation(choice):
 
 # точка входа, выбор типа модицикации
 def main():
-    if select_operation() == "1":
+    choise = select_operation()
+    if choise == "1":
         compare_files()
+    elif choise == "3":
+        find_missing_code()
     else:
         modify_code(input_file)
 
@@ -213,6 +217,7 @@ def select_operation():
         "Выберите операцию:\n\
 1 - удалить дубликаты\n\
 2 - модифицировать коды\n\
+3 - найти отсутствующий в коробе блок (выполняется сравнение кодов в json из базы с отсканированными в неполном коробе кодами блоков)\n\
 Выбор: "
     )
     return choice
