@@ -8,12 +8,12 @@ def find_missing_code():
                 string = string.strip()
                 missing_codes += f"{string.rstrip(',')}\n"
         if missing_codes != "":
-            print(f"Отсутствующие блоки \n\
-(результат сохранен в файл 'missing_codes.txt'): \n{missing_codes}")
+            print(f"Отсутствующие блоки (результат сохранен в файл 'missing_codes.txt'): \n{missing_codes}")
         else:
             print("Все блоки на месте.")
     with open("missing_codes.txt", "w", encoding="utf-8") as outfile:
         outfile.write(missing_codes)
+    input("Для завершения нажмите Enter ")
 
 
 if __name__ == "__main__":
