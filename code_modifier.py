@@ -81,7 +81,7 @@ def pack_code_json_modify(input_file):
         # не ставится символ переноса строки, либо ставятся пробелы
         if (len(string) >= 21 and len(string) <= 30) and string[0:6] == "000000":
             result = open("output.txt", "a+", encoding="utf-8")
-            output_file += f'"{replace_quotes_json(string[:25])}",\n'
+            output_file += f'                "{replace_quotes_json(string[:25])}",\n'
             count += 1
     check_input_file(count)
     result.write(output_file[:-2])
